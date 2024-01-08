@@ -1,0 +1,17 @@
+- hosts: all
+  become: true
+  pre_tasks:
+  - name: Update_cache of servers
+    apt:
+      upgrade=yes
+      update_cache=yes
+
+- hosts: WebServer
+  become: true
+  roles:
+    - WebServer
+
+- hosts: FileServer
+  become: true
+  roles:
+    - Fileserver

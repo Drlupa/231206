@@ -1,0 +1,10 @@
+- name: Instaling nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Using template for localhost proxy
+  template:
+    src: /home/charun/Devops_tasks/231206/ansible-proj/my_templates/nginx_template
+    dest: /etc/nginx/sites-available/default
+    mode: 0744

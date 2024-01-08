@@ -1,0 +1,7 @@
+- name: downloading packages for nfs server
+  apt:
+    pkg:
+    - nfs-kernel-server
+    - nfs-common
+    state: present
+

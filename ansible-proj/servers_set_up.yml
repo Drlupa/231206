@@ -11,7 +11,8 @@
   roles:
     - WebServer
 
-- hosts: FileServer
+- hosts: all
   become: true
   roles:
-    - Fileserver
+    - nfs
+

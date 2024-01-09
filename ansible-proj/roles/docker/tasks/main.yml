@@ -1,0 +1,11 @@
+- name: downloading docker packages
+  apt:
+    name: docker.io
+    state: present
+
+- name: uploading docker compose template to server
+  template:
+    src: /home/charun/Devops_tasks/231206/ansible-proj/my_templates/compose-django.yml
+    dest: /code/
+    mode: 0744
+

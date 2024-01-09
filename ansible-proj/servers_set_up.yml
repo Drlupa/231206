@@ -16,3 +16,7 @@
   roles:
     - nfs
 
+- hosts: WebServer
+  become: true
+  roles:
+    - docker

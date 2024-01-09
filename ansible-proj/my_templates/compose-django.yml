@@ -1,0 +1,6 @@
+services:
+  django-app:
+    image: django3
+    ports:
+      - 8001:8000
+      

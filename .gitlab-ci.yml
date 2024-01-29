@@ -1,0 +1,36 @@
+variables:
+    IMAGE_TAG: django-proj0v1 
+    IMAGE_ID: 6cde4zcp/my_repo
+
+stages:
+    - "building_image"
+    - "deploying_image"
+
+docker_build:
+    stage: building_image
+    image: docker:24.0.7-cli
+    services:
+        - docker:24.0.7-dind
+
+    variables:
+
+        DOCKER_HOST: tcp://docker:2375
+        DOCKER_TLS_CERTDIR: ""
+
+    before_script:        
+        - docker login -u $MY_DOCKER_USER -p  $MY_DOCKER_PASS
+    script:
+        - apk add nmap
+        - nmap -sT -p- docker
+        - docker build -t $IMAGE_ID:$IMAGE_TAG . 
+        - docker push $IMAGE_ID:$IMAGE_TAG
+
+
+deploy:
+    stage: deploying_image
+    image: ruby:2.5
+    before_script:
+        - chmod 400 "$SSH_KEY"
+    script:
+        - ssh -o StrictHostKeyChecking=no -i $SSH_KEY $USER@$SERVER "docker login -u $MY_DOCKER_USER -p  $MY_DOCKER_PASS && 
+            docker run -d -p 8000:8000 $IMAGE_ID:$IMAGE_TAG"

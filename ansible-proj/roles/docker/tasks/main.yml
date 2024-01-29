@@ -5,7 +5,7 @@
 
 - name: uploading docker compose template to server
   template:
-    src: /home/charun/Devops_tasks/231206/ansible-proj/my_templates/compose-django.yml
+    src: compose-django.yml.j2
     dest: /code/
     mode: 0744
 

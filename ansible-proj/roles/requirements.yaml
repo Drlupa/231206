@@ -1,0 +1,12 @@
+- src: https://github.com/Drlupa/ansible-nginx-roles.git
+  version: "1.0"
+  name: nginx
+
+- src: https://github.com/Drlupa/ansible-docker-role.git
+  version: "2.0"
+  name: docker
+
+- src: https://github.com/Drlupa/ansible-nfs-role.git
+  version: "2.0"
+  name: nfs
+

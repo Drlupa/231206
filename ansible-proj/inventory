@@ -1,7 +1,4 @@
 [NfsServer]
-#NFS server
-158.160.119.210
 
 [WebServer]
-#NFS client
-158.160.120.215
+158.160.119.210
